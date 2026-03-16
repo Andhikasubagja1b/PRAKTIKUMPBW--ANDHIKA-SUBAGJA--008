@@ -100,7 +100,7 @@
         border: none;
         background: #fff;
         box-shadow: 6px 6px 30px #d1d1d1, -6px -6px 30px #ffffff;
-        transform: translateY(-1px);
+        transform: translate(-1px);
     }
 
     
