@@ -1,0 +1,167 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Cek Nilai Mahasiswa</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    background: linear-gradient(135deg,#4facfe,#00f2fe);
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.container{
+    width:420px;
+    background:white;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+h2{
+    text-align:center;
+    margin-bottom:20px;
+    color:#333;
+}
+
+label{
+    font-weight:bold;
+    color:#444;
+}
+
+input{
+    width:100%;
+    padding:10px;
+    margin:6px 0 15px 0;
+    border-radius:6px;
+    border:1px solid #ccc;
+    transition:0.3s;
+}
+
+input:focus{
+    border-color:#4facfe;
+    outline:none;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    background:#4facfe;
+    border:none;
+    color:white;
+    font-size:16px;
+    border-radius:8px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#2b8cff;
+}
+
+.hasil{
+    margin-top:20px;
+    padding:15px;
+    border-radius:8px;
+    background:#f7f7f7;
+    border-left:5px solid #4facfe;
+    line-height:1.7;
+}
+
+.error{
+    color:red;
+    font-weight:bold;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Form Cek Nilai Mahasiswa</h2>
+
+<label>NIM</label>
+<input type="text" id="nim">
+
+<label>Nama</label>
+<input type="text" id="nama">
+
+<label>Kelas</label>
+<input type="text" id="kelas">
+
+<label>Prodi</label>
+<input type="text" id="prodi">
+
+<label>Nilai Mata Kuliah</label>
+<input type="number" id="nilai">
+
+<button onclick="cekNilai()">Cek Nilai</button>
+
+<div class="hasil" id="hasil"></div>
+
+</div>
+
+<script>
+
+function cekNilai(){
+
+let nim = document.getElementById("nim").value;
+let nama = document.getElementById("nama").value;
+let kelas = document.getElementById("kelas").value;
+let prodi = document.getElementById("prodi").value;
+let nilai = parseInt(document.getElementById("nilai").value);
+
+let mutu = "";
+
+if(nilai < 0 || nilai > 100 || isNaN(nilai)){
+    document.getElementById("hasil").innerHTML =
+    "<span class='error'>Error: Nilai tidak valid!</span>";
+    return;
+}
+
+if(nilai >= 80){
+    mutu = "A";
+}
+else if(nilai >= 70){
+    mutu = "B";
+}
+else if(nilai >= 60){
+    mutu = "C";
+}
+else if(nilai >= 50){
+    mutu = "D";
+}
+else{
+    mutu = "E";
+}
+
+document.getElementById("hasil").innerHTML = `
+<b>NIM :</b> ${nim} <br>
+<b>Nama :</b> ${nama} <br>
+<b>Kelas :</b> ${kelas} <br>
+<b>Prodi :</b> ${prodi} <br>
+<b>Nilai :</b> ${nilai} <br>
+<b>Huruf Mutu :</b> ${mutu}
+`;
+
+}
+
+</script>
+
+</body>
+</html>
+```
